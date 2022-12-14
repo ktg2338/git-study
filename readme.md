@@ -31,25 +31,7 @@ Git의 관리에서 특정 파일/폴더를 배제해야 할 경우
 .gitignore 파일을 사용해서 배제할 요소들을 지정할 수 있습니다.
 
 .gitignore 형식
-# 이렇게 #를 사용해서 주석
-# 모든 file.c
-file.c
-# 최상위 폴더의 file.c
-/file.c
-# 모든 .c 확장자 파일
-*.c
-# .c 확장자지만 무시하지 않을 파일
-!not_ignore_this.c
-# logs란 이름의 파일 또는 폴더와 그 내용들
-logs
-# logs란 이름의 폴더와 그 내용들
-logs/
-# logs 폴더 바로 안의 debug.log와 .c 파일들
-logs/debug.log
-logs/*.c
-# logs 폴더 바로 안, 또는 그 안의 다른 폴더(들) 안의 debug.log
-logs/**/debug.log
-
+![image](https://user-images.githubusercontent.com/69129562/207556796-6e5da2cd-447e-429c-a3a9-934b283b9eab.png)
 파일 하나 담기
 git add tigers.yaml
 모든 파일 담기
@@ -79,6 +61,8 @@ git revert --no-commit (되돌릴  커밋 해시)
  -원하는 다른 작업을 추가한 다음 함께 커밋
  -취소하려면 git reset --hard
  
+ ![image](https://user-images.githubusercontent.com/69129562/207556684-a38d9936-dcd8-4d95-8179-586efe6c0c49.png)
+
  Branch: 분기된 가지 (다른 차원)
 프로젝트를 하나 이상의 모습으로 관리해야 할 때
 
@@ -88,4 +72,41 @@ git revert --no-commit (되돌릴  커밋 해시)
 예) 신기능 1, 신기능 2, 코드개선, 긴급수정...
 각각의 차원에서 작업한 뒤 확정된 것을 메인 차원에 통합
 
+add-coach란 이름의 브랜치 생성
+git branch add-coach
 
+브랜치 목록 확인
+git branch
+
+add-coach 브랜치로 이동
+git switch add-coach
+
+브랜치 생성과 동시에 이동하기
+git switch -c new-teams
+
+브랜치 삭제하기
+git branch -d (삭제할 브랜치명)
+
+지워질 브랜치에만 있는 내용의 커밋이 있을 경우
+즉 다른 브랜치로 가져오지 않은 내용이 있는 브랜치를 지울 때는
+-d 대신 -D(대문자)로 강제 삭제해야 합니다.
+git branch -D (강제삭제할 브랜치명)
+
+브랜치 이름 바꾸기
+git branch -m (기존 브랜치명) (새 브랜치명)
+
+여러 브랜치 내역을 보고싶을땐 소스트리를 이용하자.
+
+git branch -m (기존 브랜치명) (새 브랜치명)
+
+서로 다른 브랜치를 합치는 두 방식
+merge : 두 브랜치를 한 커밋에 이어붙입니다.
+
+브랜치 사용내역을 남길 필요가 있을 때 적합한 방식입니다.
+다른 형태의 merge에 대해서도 이후 다루게 될 것입니다.
+rebase : 브랜치를 다른 브랜치에 이어붙입니다.
+
+한 줄로 깔끔히 정리된 내역을 유지하기 원할 때 적합합니다.
+이미 팀원과 공유된 커밋들에 대해서는 사용하지 않는 것이 좋습니다.
+
+lesson3 브랜치 합치기부터
