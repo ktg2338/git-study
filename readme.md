@@ -111,4 +111,70 @@ rebase : 브랜치를 다른 브랜치에 이어붙입니다.
 한 줄로 깔끔히 정리된 내역을 유지하기 원할 때 적합합니다.
 이미 팀원과 공유된 커밋들에 대해서는 사용하지 않는 것이 좋습니다.
 
-lesson3 브랜치 합치기부터
+add-coach 브랜치를 main 브랜치로 merge
+
+1. merge로 합치기
+main 브랜치로 이동
+아래의 명령어로 병합
+git merge add-coach
+:wq로 자동입력된 커밋 메시지 저장하여 마무리
+
+merge는 reset으로 되돌리기 가능
+merge도 하나의 커밋
+merge하기 전 해당 브랜치의 마지막 시점으로
+
+병합된 브랜치는 삭제
+삭제 전 소스트리에서 add-coach 위치 확인
+git branch -d add-coach
+
+2. rebase로 합치기
+new-teams 브랜치를 main 브랜치로 rebase
+new-teams 브랜치로 이동
+🛑 merge때와는 반대!
+아래의 명령어로 병합
+git rebase main
+소스트리에서 상태 확인
+main 브랜치는 뒤쳐져 있는 상황
+main 브랜치로 이동 후 아래 명령어로 new-teams의 시점으로 fast-forward
+git merge new-teams
+new-teams 브랜치 삭제
+
+브랜치 간 충돌
+파일의 같은 위치에 다른 내용이 입력된 상황
+1. merge 충돌 해결하기
+오류 메시지와 git status 확인
+당장 충돌 해결이 어려울 경우 아래 명령어로 merge 중단
+git merge --abort
+해결 가능 시 충돌 부분을 수정한 뒤 git add ., git commit으로 병합 완료
+
+2. rebase 충돌 해결하기
+오류 메시지와 git status 확인
+git rebase --abort
+해결 가능 시
+충돌 부분을 수정한 뒤 git add .
+아래 명령어로 계속
+git rebase --continue
+충돌이 모두 해결될 때까지 반복
+
+
+원격 저장소 사용하기 (깃헙)
+
+1. 로컬에 원격 저장소 추가 후 푸시
+git remote add origin (원격 저장소 주소) 
+로컬의 Git 저장소에 원격 저장소로의 연결 추가
+원격 저장소 이름에 흔히 origin 사용. 다른 것으로 수정 가능
+git branch -M main
+git push -u origin main 
+로컬 저장소의 커밋 내역들 원격으로 push(업로드)
+
+원격 목록 보기
+git remote
+
+원격 지우기 (로컬 프로젝트와의 연결만 없애는 것. GitHub의 레포지토리는 지워지지 않음)
+git remote remove (origin 등 원격 이름)
+
+Git clone: Git 관리내역 포함 다운로드
+터미널이나 Git Bash에서 대상 폴더 이동 후
+git clone (원격 저장소 주소)
+
+4강. push와 pull
