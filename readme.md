@@ -31,7 +31,9 @@ Git의 관리에서 특정 파일/폴더를 배제해야 할 경우
 .gitignore 파일을 사용해서 배제할 요소들을 지정할 수 있습니다.
 
 .gitignore 형식
+
 ![image](https://user-images.githubusercontent.com/69129562/207556796-6e5da2cd-447e-429c-a3a9-934b283b9eab.png)
+
 파일 하나 담기
 git add tigers.yaml
 모든 파일 담기
