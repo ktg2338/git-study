@@ -1,0 +1,32 @@
+깃 기본 브랜치 생성
+
+git config --global user.name "(본인 이름)"
+git config --global user.email "(본인 이메일)"
+
+확인 명령어
+git config --global user.name
+git config --global user.email
+
+기본 브랜치명 변경
+git config --global init.defaultBranch main
+
+깃 프로젝트 관리 시작
+해당폴더->깃바쉬->
+git init
+
+폴더에 숨김모드로 .git 폴더 생성 확인
+🛑 이 폴더를 지우면 Git 관리내역이 삭제됩니다. (현 파일들은 유지)
+
+깃 상태확인
+git status
+
+소스트리 : gui로 되어있어 직관적이다. 특히 브랜치들을 볼때 , 명령어를 잘모를땐 쓰기 편하다.
+
+Git의 관리에서 특정 파일/폴더를 배제해야 할 경우
+  a. 포함할 필요가 없을 때
+자동으로 생성 또는 다운로드되는 파일들 (빌드 결과물, 라이브러리)
+  b. 포함하지 말아야 할 때
+보안상 민감한 정보를 담은 파일
+.gitignore 파일을 사용해서 배제할 요소들을 지정할 수 있습니다.
+
+.gitignore 형식
