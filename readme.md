@@ -177,4 +177,327 @@ Git clone: Git 관리내역 포함 다운로드
 터미널이나 Git Bash에서 대상 폴더 이동 후
 git clone (원격 저장소 주소)
 
-4강. push와 pull
+1. 원격으로 커밋 밀어올리기(push)
+git push
+2. 원격의 커밋 당겨오기(pull)
+git pull
+
+pull 할 것이 있을 때 push를 하면?
+로컬에서 Leopards의 manager를 Dooli로 수정
+GitHub에서 Leopards의 coach를 Lupi로 수정
+push 해보기
+원격에 먼저 적용된 새 버전이 있으므로 적용 불가
+pull 해서 원격의 버전을 받아온 다음 push 가능
+
+push 할 것이 있을 시 pull 하는 두 가지 방법
+git pull --no-rebase - merge 방식
+git pull --rebase - rebase 방식
+수행후 push
+
+1. 로컬에서 브랜치 만들어 원격에 push 해보기
+git push 바로 하면 대상을 명시하라는 메시지 나타남
+아래 명령어로 원격의 브랜치 명시 및 기본설정
+git push -u origin from-local
+브랜치 목록 살펴보기
+git branch --all
+
+2. 원격의 브랜치 로컬에 받아오기
+아래 명령어로 원격의 변경사항 확인
+git fetch
+아래 명령어로 로컬에 같은 이름의 브랜치를 생성하여 연결하고 switch
+git switch -t origin/from-remote
+원격의 브랜치 삭제
+git push (원격 이름) --delete (원격의 브랜치명)
+
+![image](https://user-images.githubusercontent.com/69129562/207843100-bd011e50-1550-4231-99f8-d164c05116ed.png)
+
+commit되어 레포지토리에 들어간 후 수정사항이 발생하면 tracked 파일로써 스테이징을 기다리게 됩니다.
+
+Working directory
+untracked: Add된 적 없는 파일, ignore 된 파일
+tracked: Add된 적 있고 변경내역이 있는 파일
+git add 명령어로 Staging area로 이동
+
+Staging area
+커밋을 위한 준비 단계
+예시: 작업을 위해 선택된 파일들
+git commit 명령어로 repository로 이동
+
+Repository
+.git directory라고도 불림
+커밋된 상태
+
+git rm
+tigers.yaml를 삭제해본 뒤 git status로 살펴보기
+
+파일의 삭제가 working directory에 있음
+git reset --hard로 복원
+
+git rm tigers.yaml로 삭제하고 git status로 살펴보기
+
+파일의 삭제가 Staging area에 있음
+git reset --hard로 복원
+
+git mv
+tigers.yaml를 zzamtigers.yaml로 이름변경 뒤 git status로 살펴보기
+복원 후 git mv tigers.yaml zzamtigers.yaml로 실행 뒤 비교
+
+파일을 staging area에서 working directory로
+git restore --staged (파일명)
+--staged를 빼면 working directory에서도 제거
+예전: git reset HEAD (파일명)
+
+reset의 세 가지 옵션
+--soft: repository에서 staging area로 이동
+--mixed (default): repository에서 working directory로 이동
+--hard: 수정사항 완전히 삭제
+
+![image](https://user-images.githubusercontent.com/69129562/207845247-d9c7afeb-59f7-43f0-b6ef-70e4c9ff713c.png)
+
+Git의 HEAD
+현재 속한 브랜치의 가장 최신 커밋
+switch로 브랜치 이동해보기
+main과 delta-branch
+
+checkout으로 앞뒤 이동해보기
+git checkout HEAD^
+^ 또는 ~: 갯수만큼 이전으로 이동
+git checkout HEAD^^^, git checkout HEAD~5
+커밋 해시를 사용해서도 이동 가능
+git checkout (커밋해시)
+git checkout - : (이동을) 한 단계 되돌리기
+git reset HEAD(원하는 단계) (옵션)
+
+fetch와 pull의 차이
+fetch: 원격 저장소의 최신 커밋을 로컬로 가져오기만 함
+pull: 원격 저장소의 최신 커밋을 로컬로 가져와 merge 또는 rebase
+원격의 새 브랜치 확인
+git checkout origin/(브랜치명)
+git switch -t origin/(브랜치명)
+
+global 설정과 local 설정
+config를 --global과 함께 지정하면 전역으로 설정됩니다.
+특정 프로젝트만의 user.name과 user.email 지정해보기
+현재 모든 설정값 보기
+git config (global) --list
+기본 에디터 수정
+git config --global core.editor "code --wait"
+
+1. 내용 확인하며 hunk별로 스테이징하기
+깃의 변경사항 단위를 hunk라고 합니다.
+아래 명령어로 hunk별 스테이징 진행
+git add -p
+옵션 설명을 보려면 ?입력 후 엔터
+y 또는 n로 각 헝크 선택
+2. 변경사항을 확인하고 커밋하기
+git commit -v
+
+커밋하기 애매한 변화 치워두기
+1. 아래 명령어로 치워두기
+git stash
+2. 원하는 시점, 브랜치에서 다시 적용
+git stash pop
+3. 원하는 것만 stash 해보기
+git stash -p
+4. 메시지와 함께 스태시
+git stash -m 'Add Stash3'
+스태시 목록 보기
+git stash list.
+
+커밋 메시지 변경
+git commit --amend
+커밋 메시지 한 줄로 변경
+git commit --amend -m 'Add members to Panthers and Pumas'
+
+git rebase -i (대상 바로 이전 커밋)
+과거 커밋 내역을 다양한 방법으로 수정 가능
+
+![image](https://user-images.githubusercontent.com/69129562/207854109-4132ecdb-8fa6-4a9e-91f0-7bfbbcbc1cbf.png)
+
+git clean -> Git에서 추적하지 않는 파일들 삭제
+
+![image](https://user-images.githubusercontent.com/69129562/207868533-97b20dfe-499e-4246-a4f7-b34b6db123d3.png)
+
+git restore -> 특정 파일을 지정된 상태로 복구
+파일을 수정하고 아래 명령어들 사용해보기
+git restore (파일명)
+-워킹 디렉토리의 특정 파일 복구
+-파일명 자리에 . : 모든 파일 복구
+
+변경상태를 스테이지에서 워킹 디렉토리로 돌려놓기
+git restore --staged (파일명)
+
+파일을 특정 커밋의 상태로 되돌리기
+git restore --source=(헤드 또는 커밋 해시) 파일명
+
+git reflog
+reset으로 사라진 커밋을 복구
+reflog는 프로젝트가 위치한 커밋이 바뀔 때마다 기록되는 내역을 보여주고
+이를 사용하여 reset하기 이전 시점으로 프로젝트를 복구할 수 있습니다.
+
+커밋에 태그 달아보기
+lightweight -	특정 커밋을 가리키는 용도
+annotated	 - 작성자 정보와 날짜, 메시지, GPG 서명 포함 가능
+마지막 커밋에 태그 달기 (lightweight)
+git tag v2.0.0
+현존하는 태그 확인
+git tag
+원하는 태그의 내용 확인
+git show v2.0.0
+태그 삭제
+git tag -d v2.0.0
+마지막 커밋에 태그 달기 (annotated)
+git tag -a v2.0.0
+입력 후 메시지 작성 또는
+git tag v2.0.0 -m '자진모리 버전' - (-m 태그가 -a 태그 암시)
+원하는 커밋에 태그 달기
+git tag (태그명) (커밋 해시) -m (메시지)
+원하는 패턴으로 필터링하기
+git tag -l 'v1.*'
+원하는 버전으로 체크아웃
+git checkout v1.2.1
+
+원격에 태그 동기화
+특정 태그 원격에 올리기
+git push (원격명) (태그명)
+특정 태그 원격에서 삭제
+git push --delete (원격명) (태그명)
+로컬의 모든 태그 원격에 올리기
+git push --tags
+
+![image](https://user-images.githubusercontent.com/69129562/207874810-7fa383cf-27a1-423e-b78f-1732583b99b1.png)
+cherry-pick 명령어는 특정한 commit 하나만 콕 찝어서 현재 HEAD가 가리키는 branch에 추가할 수 있게 해준다.
+Cherry 커밋 main 브랜치로 가져오기
+main 브랜치에서 실행
+git cherry-pick (체리의 해시)
+다른 브랜치에서 파생된 브랜치 옮겨붙이기
+rebase --onto 옵션 사용
+fruit 브랜치에서 파생된 citrus 브랜치를 main 브랜치로 옮겨붙이기
+git rebase --onto (도착 브랜치) (출발 브랜치) (이동할 브랜치) -> git rebase --onto main fruit citrus
+rebase --onto를 되돌리려면?
+
+![image](https://user-images.githubusercontent.com/69129562/207876493-ebc45b58-9413-4fb3-82e7-c4f61653917a.png)
+
+reset은 브랜치별로 이뤄지므로, rebase --onto로 영향을 받은
+모든 브랜치들에서 하나하나 리셋을 진행해주어야 합니다.
+혹은 다시 옮겨붙이는 방법도 있죠.
+현재 이번 실습으로 변화가 일어난 브랜치는
+main(패스트포워드 됨)과 citrus 이 둘입니다.
+1. main 브랜치
+main은 그리로 옮겨붙여진 citrus로 fastforward된 것이 마지막 액션이므로
+reflog의 기록상에서 그 이전 기록으로 reset --hard를 하면 됩니다.
+lemon과 lime이 추가되기 전으로 돌아가는거죠.
+2. citrus 브랜치
+방법 A
+그리고 citrus 브랜치는 해당 브랜치가 옮겨지기 전 마지막 커밋인
+commit: Lime 부분을 reflog에서 찾아 그리로 reset --hard하면 됩니다.
+방법 B
+다른 방법으로는, 다시 rebase --onto를 사용해서
+citrus의 커밋들을 main으로부터 도로
+fruit브랜치의 orange 부분으로 옮기는 것입니다.
+그러러면 orange 커밋으로 checkout 한 다음
+그곳에서 새 브랜치를 만들고 (temp라 가정하죠)
+git rebase --onto temp main citrus
+위 명령어로 citrus의 두 커밋들을 해당 위치로 옮겨붙인 뒤
+temp 브랜치는 삭제해주시면 됩니다.
+
+다른 커밋들을 하나로 묶어 가져오기
+merge --squash 옵션 사용
+root 브랜치의 마디들을 하나로 묶어 main 브랜치로 가져오기
+git merge --squash (대상 브랜치)
+일반 merge : A와 B 두 브랜치를 한 곳으로 이어붙임
+
+![image](https://user-images.githubusercontent.com/69129562/207878949-b9e5cac8-e0b5-4c75-bd8b-b4c37fc9559f.png)
+
+
+merge --squash : B 브랜치의 마디들을 복사해다가 한 마디로 모아 A 브랜치에 붙임 (staged 상태로)
+
+![image](https://user-images.githubusercontent.com/69129562/207879298-9ddcff5e-9b7d-4069-9175-6bf0fb35c8b7.png)
+
+각 커밋마다의 변경사항 함께 보기
+git log -p
+최근 n개 커밋만 보기
+git log -(갯수)
+통계와 함께 보기
+git log --stat
+한 줄로 보기
+git log --oneline
+변경사항 내 단어 검색
+git log -S (검색어)
+커밋 메시지로 검색
+git log --grep (검색어)
+자주 사용되는 그래프 로그 보기
+git log --all --decorate --oneline --graph
+--all : 모든 브랜치 보기
+--graph : 그래프 표현
+--decorate : 브랜치, 태그 등 모든 레퍼런스 표시
+
+워킹 디렉토리의 변경사항 확인
+git diff
+파일명만 확인
+git diff --name-only
+스테이지의 확인
+git diff --staged
+커밋간의 차이 확인
+git diff (커밋1) (커밋2)
+-커밋 해시 또는 HEAD 번호로
+-현재 커밋과 비교하려면 이전 커밋만 명시
+브랜치간의 차이 확인
+git diff (브랜치1) (브랜치2)
+
+파일의 부분별로 작성자 확인하기
+git blame (파일명)
+특정 부분 지정해서 작성자 확인하기
+git blame -L (시작줄) (끝줄, 또는 +줄수) (파일명)
+
+git bisect
+이진 탐색 알고리즘으로 문제의 발생 시점을 찾아냅니다.
+이진 탐색 시작
+git bisect start
+오류발생 지점임을 표시
+git bisect bad
+의심 지점으로 이동
+git checkout (해당 커밋 해시)
+오류 발생 않을 시 양호함 표시
+git bisect good
+원인을 찾을 때까지 반복
+git bisect good/bad
+이진 탐색 종료
+git bisect reset
+
+Git Hooks
+Git상의 이벤트마다 자동으로 실행될 스크립트를 지정합니다.
+📁 Git Hooks 폴더 보기
+프로젝트 폴더 내 .git > hooks 폴더 확인
+파일 끝에 .sample을 없애면 훅 실행파일이 됨
+
+서브모듈
+프로젝트 폴더 안에 또 다른 프로젝트가 포함될 때 사용
+여러 프로젝트에 사용되는 공통모듈일 때 유용
+
+![image](https://user-images.githubusercontent.com/69129562/207890893-4d101f3c-d705-481d-8417-bd21db889748.png)
+
+main-project에 서브모듈로 submodule 프로젝트 추가
+main-project 디렉토리상 터미널에서 아래 명령어 실행
+git submodule add (submodule의 GitHub 레포지토리 주소) (하위폴더명, 없을 시 생략)
+-프로젝트 폴더 내 submodule폴더와 .gitmodules 파일 확인
+-스테이지된 변경사항 확인 뒤 커밋
+-양쪽 모두 수정사항 만든 뒤 main-project에서 git status로 확인
+-submodule의 변경사항은 포함되지 않음 확인
+-main-project에서 변경사항 커밋 뒤 푸시
+-submodule에서 변경사항 커밋 뒤 푸시
+-main-project에서 상태 확인
+-main-project에서 커밋, 푸시 뒤 GitHub에서 확인
+
+서브모듈 업데이트
+1. main-project 새로운 곳에 clone하기 -> 이런 프로젝트를 Clone 하면 기본적으로 서브모듈 디렉토리는 빈 디렉토리이다.
+2. 아래 명령어들로 서브모듈 init 후 클론
+git submodule init (특정 서브모듈 지정시 해당 이름)
+git submodule update
+3. GitHub에서 submodule에 수정사항 커밋
+main-project에서 아래 명령어로 업데이트
+git submodule update --remote
+서브모듈 안에 또 서브모듈이 있을 시: --recursive 추가
+
+13 1
+
