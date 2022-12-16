@@ -207,7 +207,9 @@ git switch -t origin/from-remote<br/>
 원격의 브랜치 삭제<br/>
 git push (원격 이름) --delete (원격의 브랜치명)<br/>
 <br/>
+
 ![image](https://user-images.githubusercontent.com/69129562/207843100-bd011e50-1550-4231-99f8-d164c05116ed.png)
+
 <br/>
 commit되어 레포지토리에 들어간 후 수정사항이 발생하면 tracked 파일로써 스테이징을 기다리게 됩니다.<br/>
 <br/>
