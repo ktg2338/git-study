@@ -1,280 +1,280 @@
-깃 기본 브랜치 생성
-
-git config --global user.name "(본인 이름)"
-git config --global user.email "(본인 이메일)"
-
-확인 명령어
-git config --global user.name
-git config --global user.email
-
-기본 브랜치명 변경
-git config --global init.defaultBranch main
-
-깃 프로젝트 관리 시작
-해당폴더->깃바쉬->
-git init
-
-폴더에 숨김모드로 .git 폴더 생성 확인
-🛑 이 폴더를 지우면 Git 관리내역이 삭제됩니다. (현 파일들은 유지)
-
-깃 상태확인
-git status
-추적하지 않는(untracked) 파일: Git의 관리에 들어간 적 없는 파일
-
-소스트리 : gui로 되어있어 직관적이다. 특히 브랜치들을 볼때 , 명령어를 잘모를땐 쓰기 편하다.
-
-Git의 관리에서 특정 파일/폴더를 배제해야 할 경우
-  a. 포함할 필요가 없을 때
-자동으로 생성 또는 다운로드되는 파일들 (빌드 결과물, 라이브러리)
-  b. 포함하지 말아야 할 때
-보안상 민감한 정보를 담은 파일
-.gitignore 파일을 사용해서 배제할 요소들을 지정할 수 있습니다.
-
-.gitignore 형식
+깃 기본 브랜치 생성<br/>
+<br/>
+git config --global user.name "(본인 이름)"<br/>
+git config --global user.email "(본인 이메일)"<br/>
+<br/>
+확인 명령어<br/>
+git config --global user.name<br/>
+git config --global user.email<br/>
+<br/>
+기본 브랜치명 변경<br/>
+git config --global init.defaultBranch main<br/>
+<br/>
+깃 프로젝트 관리 시작<br/>
+해당폴더->깃바쉬-><br/>
+git init<br/>
+<br/>
+폴더에 숨김모드로 .git 폴더 생성 확인<br/>
+🛑 이 폴더를 지우면 Git 관리내역이 삭제됩니다. (현 파일들은 유지)<br/>
+<br/>
+깃 상태확인<br/>
+git status<br/>
+추적하지 않는(untracked) 파일: Git의 관리에 들어간 적 없는 파일<br/>
+<br/>
+소스트리 : gui로 되어있어 직관적이다. 특히 브랜치들을 볼때 , 명령어를 잘모를땐 쓰기 편하다.<br/>
+<br/>
+Git의 관리에서 특정 파일/폴더를 배제해야 할 경우<br/>
+  a. 포함할 필요가 없을 때<br/>
+자동으로 생성 또는 다운로드되는 파일들 (빌드 결과물, 라이브러리)<br/>
+  b. 포함하지 말아야 할 때<br/>
+보안상 민감한 정보를 담은 파일<br/>
+.gitignore 파일을 사용해서 배제할 요소들을 지정할 수 있습니다.<br/>
+.gitignore 형식<br/>
 
 ![image](https://user-images.githubusercontent.com/69129562/207556796-6e5da2cd-447e-429c-a3a9-934b283b9eab.png)
-
-파일 하나 담기
-git add tigers.yaml
-모든 파일 담기
-git add .
-
-타임캡슐 묻기(깃에 업로드 전에 1차 저장)
-git commit
-커밋 메시지까지 함께 작성하기
-git commit -m "FIRST COMMIT"
-지난 커밋 내역 확인
-git log
-
-add와 commit 한꺼번에
-git commit -am "(메시지)"
-
-Git에서 과거로 돌아가는 두 방식
-reset : 원하는 시점으로 돌아간 뒤 이후 내역들을 지웁니다.
-git reset --hard (돌아갈 커밋 해시)
-reset 하기 전 시점으로 복원해보기
-git reset --hard
-
-revert : 되돌리기 원하는 시점의 커밋을 거꾸로 실행합니다.
-git revert (되돌릴 커밋 해시)
-
-🛑커밋해버리지 않고 revert하기
-git revert --no-commit (되돌릴  커밋 해시)
- -원하는 다른 작업을 추가한 다음 함께 커밋
- -취소하려면 git reset --hard
- 
+<br/>
+파일 하나 담기<br/>
+git add tigers.yaml<br/>
+모든 파일 담기 -> working directory -> staging area<br/>
+git add .<br/>
+<br/>
+타임캡슐 묻기(깃에 업로드 전에 1차 저장) - staging area -> local repo<br/>
+git commit<br/>
+커밋 메시지까지 함께 작성하기<br/>
+git commit -m "FIRST COMMIT"<br/>
+지난 커밋 내역 확인<br/>
+git log<br/>
+<br/>
+add와 commit 한꺼번에<br/>
+git commit -am "(메시지)"<br/>
+<br/>
+Git에서 과거로 돌아가는 두 방식<br/>
+reset : 원하는 시점으로 돌아간 뒤 이후 내역들을 지웁니다.<br/>
+git reset --hard (돌아갈 커밋 해시)<br/>
+reset 하기 전 시점으로 복원해보기<br/>
+git reset --hard<br/>
+<br/>
+revert : 되돌리기 원하는 시점의 커밋을 거꾸로 실행합니다.<br/>
+git revert (되돌릴 커밋 해시)<br/>
+<br/>
+🛑커밋해버리지 않고 revert하기<br/>
+git revert --no-commit (되돌릴  커밋 해시)<br/>
+ -원하는 다른 작업을 추가한 다음 함께 커밋<br/>
+ -취소하려면 git reset --hard<br/>
+ <br/>
  ![image](https://user-images.githubusercontent.com/69129562/207556684-a38d9936-dcd8-4d95-8179-586efe6c0c49.png)
-
- Branch: 분기된 가지 (다른 차원)
-프로젝트를 하나 이상의 모습으로 관리해야 할 때
-
-예) 실배포용, 테스트서버용, 새로운 시도용
-여러 작업들이 각각 독립되어 진행될 때
-
-예) 신기능 1, 신기능 2, 코드개선, 긴급수정...
-각각의 차원에서 작업한 뒤 확정된 것을 메인 차원에 통합
-
-add-coach란 이름의 브랜치 생성
-git branch add-coach
-
-브랜치 목록 확인
-git branch
-
-add-coach 브랜치로 이동
-git switch add-coach
-
-브랜치 생성과 동시에 이동하기
-git switch -c new-teams
-
-브랜치 삭제하기
-git branch -d (삭제할 브랜치명)
-
-지워질 브랜치에만 있는 내용의 커밋이 있을 경우
+<br/>
+ Branch: 분기된 가지 (다른 차원)<br/>
+프로젝트를 하나 이상의 모습으로 관리해야 할 때<br/>
+<br/>
+예) 실배포용, 테스트서버용, 새로운 시도용<br/>
+여러 작업들이 각각 독립되어 진행될 때<br/>
+<br/>
+예) 신기능 1, 신기능 2, 코드개선, 긴급수정...<br/>
+각각의 차원에서 작업한 뒤 확정된 것을 메인 차원에 통합<br/>
+<br/>
+add-coach란 이름의 브랜치 생성<br/>
+git branch add-coach<br/>
+<br/>
+브랜치 목록 확인<br/>
+git branch<br/>
+<br/>
+add-coach 브랜치로 이동<br/>
+git switch add-coach<br/>
+<br/>
+브랜치 생성과 동시에 이동하기<br/>
+git switch -c new-teams<br/>
+<br/>
+브랜치 삭제하기<br/>
+git branch -d (삭제할 브랜치명)<br/>
+<br/>
+지워질 브랜치에만 있는 내용의 커밋이 있을 경우<br/>
 즉 다른 브랜치로 가져오지 않은 내용이 있는 브랜치를 지울 때는
--d 대신 -D(대문자)로 강제 삭제해야 합니다.
-git branch -D (강제삭제할 브랜치명)
+-d 대신 -D(대문자)로 강제 삭제해야 합니다.<br/>
+git branch -D (강제삭제할 브랜치명)<br/>
+<br/>
+브랜치 이름 바꾸기<br/>
+git branch -m (기존 브랜치명) (새 브랜치명)<br/>
+<br/>
+여러 브랜치 내역을 보고싶을땐 소스트리를 이용하자.<br/>
+<br/>
 
-브랜치 이름 바꾸기
-git branch -m (기존 브랜치명) (새 브랜치명)
+서로 다른 브랜치를 합치는 두 방식<br/>
+merge : 두 브랜치를 한 커밋에 이어붙입니다.<br/>
+<br/>
+브랜치 사용내역을 남길 필요가 있을 때 적합한 방식입니다.<br/>
+다른 형태의 merge에 대해서도 이후 다루게 될 것입니다.<br/>
+rebase : 브랜치를 다른 브랜치에 이어붙입니다.<br/>
+<br/>
+한 줄로 깔끔히 정리된 내역을 유지하기 원할 때 적합합니다.<br/>
+이미 팀원과 공유된 커밋들에 대해서는 사용하지 않는 것이 좋습니다.<br/>
+<br/>
+add-coach 브랜치를 main 브랜치로 merge<br/>
 
-여러 브랜치 내역을 보고싶을땐 소스트리를 이용하자.
+1. merge로 합치기<br/>
+main 브랜치로 이동<br/>
+아래의 명령어로 병합<br/>
+git merge add-coach<br/>
+:wq로 자동입력된 커밋 메시지 저장하여 마무리<br/>
+<br/>
+merge는 reset으로 되돌리기 가능<br/>
+merge도 하나의 커밋<br/>
+merge하기 전 해당 브랜치의 마지막 시점으로<br/>
+<br/>
+병합된 브랜치는 삭제<br/>
+삭제 전 소스트리에서 add-coach 위치 확인<br/>
+git branch -d add-coach<br/>
+<br/>
+2. rebase로 합치기<br/>
+new-teams 브랜치를 main 브랜치로 rebase<br/>
+new-teams 브랜치로 이동<br/>
+🛑 merge때와는 반대!<br/>
+아래의 명령어로 병합<br/>
+git rebase main<br/>
+소스트리에서 상태 확인<br/>
+main 브랜치는 뒤쳐져 있는 상황<br/>
+main 브랜치로 이동 후 아래 명령어로 new-teams의 시점으로 fast-forward<br/>
+git merge new-teams<br/>
+new-teams 브랜치 삭제<br/>
+<br/>
+브랜치 간 충돌<br/>
+파일의 같은 위치에 다른 내용이 입력된 상황<br/>
+1. merge 충돌 해결하기<br/>
+오류 메시지와 git status 확인<br/>
+당장 충돌 해결이 어려울 경우 아래 명령어로 merge 중단<br/>
+git merge --abort<br/>
+해결 가능 시 충돌 부분을 수정한 뒤 git add ., git commit으로 병합 완료<br/>
+<br/>
+2. rebase 충돌 해결하기<br/>
+오류 메시지와 git status 확인<br/>
+git rebase --abort<br/>
+해결 가능 시<br/>
+충돌 부분을 수정한 뒤 git add .<br/>
+아래 명령어로 계속<br/>
+git rebase --continue<br/>
+충돌이 모두 해결될 때까지 반복<br/>
+<br/>
 
-git branch -m (기존 브랜치명) (새 브랜치명)
-
-서로 다른 브랜치를 합치는 두 방식
-merge : 두 브랜치를 한 커밋에 이어붙입니다.
-
-브랜치 사용내역을 남길 필요가 있을 때 적합한 방식입니다.
-다른 형태의 merge에 대해서도 이후 다루게 될 것입니다.
-rebase : 브랜치를 다른 브랜치에 이어붙입니다.
-
-한 줄로 깔끔히 정리된 내역을 유지하기 원할 때 적합합니다.
-이미 팀원과 공유된 커밋들에 대해서는 사용하지 않는 것이 좋습니다.
-
-add-coach 브랜치를 main 브랜치로 merge
-
-1. merge로 합치기
-main 브랜치로 이동
-아래의 명령어로 병합
-git merge add-coach
-:wq로 자동입력된 커밋 메시지 저장하여 마무리
-
-merge는 reset으로 되돌리기 가능
-merge도 하나의 커밋
-merge하기 전 해당 브랜치의 마지막 시점으로
-
-병합된 브랜치는 삭제
-삭제 전 소스트리에서 add-coach 위치 확인
-git branch -d add-coach
-
-2. rebase로 합치기
-new-teams 브랜치를 main 브랜치로 rebase
-new-teams 브랜치로 이동
-🛑 merge때와는 반대!
-아래의 명령어로 병합
-git rebase main
-소스트리에서 상태 확인
-main 브랜치는 뒤쳐져 있는 상황
-main 브랜치로 이동 후 아래 명령어로 new-teams의 시점으로 fast-forward
-git merge new-teams
-new-teams 브랜치 삭제
-
-브랜치 간 충돌
-파일의 같은 위치에 다른 내용이 입력된 상황
-1. merge 충돌 해결하기
-오류 메시지와 git status 확인
-당장 충돌 해결이 어려울 경우 아래 명령어로 merge 중단
-git merge --abort
-해결 가능 시 충돌 부분을 수정한 뒤 git add ., git commit으로 병합 완료
-
-2. rebase 충돌 해결하기
-오류 메시지와 git status 확인
-git rebase --abort
-해결 가능 시
-충돌 부분을 수정한 뒤 git add .
-아래 명령어로 계속
-git rebase --continue
-충돌이 모두 해결될 때까지 반복
-
-
-원격 저장소 사용하기 (깃헙)
-
-1. 로컬에 원격 저장소 추가 후 푸시
-git remote add origin (원격 저장소 주소) 
-로컬의 Git 저장소에 원격 저장소로의 연결 추가
-원격 저장소 이름에 흔히 origin 사용. 다른 것으로 수정 가능
-git branch -M main
-git push -u origin main 
-로컬 저장소의 커밋 내역들 원격으로 push(업로드)
-
-원격 목록 보기
-git remote
-
-원격 지우기 (로컬 프로젝트와의 연결만 없애는 것. GitHub의 레포지토리는 지워지지 않음)
-git remote remove (origin 등 원격 이름)
-
-Git clone: Git 관리내역 포함 다운로드
-터미널이나 Git Bash에서 대상 폴더 이동 후
-git clone (원격 저장소 주소)
-
-1. 원격으로 커밋 밀어올리기(push)
-git push
-2. 원격의 커밋 당겨오기(pull)
-git pull
-
-pull 할 것이 있을 때 push를 하면?
-로컬에서 Leopards의 manager를 Dooli로 수정
-GitHub에서 Leopards의 coach를 Lupi로 수정
-push 해보기
-원격에 먼저 적용된 새 버전이 있으므로 적용 불가
-pull 해서 원격의 버전을 받아온 다음 push 가능
-
-push 할 것이 있을 시 pull 하는 두 가지 방법
-git pull --no-rebase - merge 방식
-git pull --rebase - rebase 방식
-수행후 push
-
-1. 로컬에서 브랜치 만들어 원격에 push 해보기
-git push 바로 하면 대상을 명시하라는 메시지 나타남
-아래 명령어로 원격의 브랜치 명시 및 기본설정
-git push -u origin from-local
-브랜치 목록 살펴보기
-git branch --all
-
-2. 원격의 브랜치 로컬에 받아오기
-아래 명령어로 원격의 변경사항 확인
-git fetch
-아래 명령어로 로컬에 같은 이름의 브랜치를 생성하여 연결하고 switch
-git switch -t origin/from-remote
-원격의 브랜치 삭제
-git push (원격 이름) --delete (원격의 브랜치명)
-
+원격 저장소 사용하기 (깃헙)<br/>
+<br/>
+1. 로컬에 원격 저장소 추가 후 푸시<br/>
+git remote add origin (원격 저장소 주소) <br/>
+로컬의 Git 저장소에 원격 저장소로의 연결 추가<br/>
+원격 저장소 이름에 흔히 origin 사용. 다른 것으로 수정 가능<br/>
+git branch -M main<br/>
+git push -u origin main <br/>
+로컬 저장소의 커밋 내역들 원격으로 push(업로드)<br/>
+<br/>
+원격 목록 보기<br/>
+git remote<br/>
+<br/>
+원격 지우기 (로컬 프로젝트와의 연결만 없애는 것. GitHub의 레포지토리는 지워지지 않음)<br/>
+git remote remove (origin 등 원격 이름)<br/>
+<br/>
+Git clone: Git 관리내역 포함 다운로드<br/>
+터미널이나 Git Bash에서 대상 폴더 이동 후<br/>
+git clone (원격 저장소 주소)<br/>
+<br/>
+1. 원격으로 커밋 밀어올리기(push)<br/>
+git push<br/>
+2. 원격의 커밋 당겨오기(pull)<br/>
+git pull<br/>
+<br/>
+pull 할 것이 있을 때 push를 하면?<br/>
+로컬에서 Leopards의 manager를 Dooli로 수정<br/>
+GitHub에서 Leopards의 coach를 Lupi로 수정<br/>
+push 해보기<br/>
+원격에 먼저 적용된 새 버전이 있으므로 적용 불가<br/>
+pull 해서 원격의 버전을 받아온 다음 push 가능<br/>
+<br/>
+push 할 것이 있을 시 pull 하는 두 가지 방법<br/>
+git pull --no-rebase    -> merge 방식<br/>
+git pull --rebase    -> rebase 방식<br/>
+수행후 push<br/>
+<br/>
+1. 로컬에서 브랜치 만들어 원격에 push 해보기<br/>
+git push 바로 하면 대상을 명시하라는 메시지 나타남<br/>
+아래 명령어로 원격의 브랜치 명시 및 기본설정<br/>
+git push -u origin from-local<br/>
+브랜치 목록 살펴보기<br/>
+git branch --all<br/>
+<br/>
+2. 원격의 브랜치 로컬에 받아오기<br/>
+아래 명령어로 원격의 변경사항 확인<br/>
+git fetch<br/>
+아래 명령어로 로컬에 같은 이름의 브랜치를 생성하여 연결하고 switch<br/>
+git switch -t origin/from-remote<br/>
+원격의 브랜치 삭제<br/>
+git push (원격 이름) --delete (원격의 브랜치명)<br/>
+<br/>
 ![image](https://user-images.githubusercontent.com/69129562/207843100-bd011e50-1550-4231-99f8-d164c05116ed.png)
+<br/>
+commit되어 레포지토리에 들어간 후 수정사항이 발생하면 tracked 파일로써 스테이징을 기다리게 됩니다.<br/>
+<br/>
+Working directory<br/>
+untracked: Add된 적 없는 파일, ignore 된 파일<br/>
+tracked: Add된 적 있고 변경내역이 있는 파일<br/>
+git add 명령어로 Staging area로 이동<br/>
+<br/>
+Staging area<br/>
+커밋을 위한 준비 단계<br/>
+예시: 작업을 위해 선택된 파일들<br/>
+git commit 명령어로 repository로 이동<br/>
+<br/>
+Repository<br/>
+.git directory라고도 불림<br/>
+커밋된 상태<br/>
+<br/>
+git rm<br/>
+tigers.yaml를 삭제해본 뒤 git status로 살펴보기<br/>
+<br/>
+파일의 삭제가 working directory에 있음<br/>
+git reset --hard로 복원<br/>
 
-commit되어 레포지토리에 들어간 후 수정사항이 발생하면 tracked 파일로써 스테이징을 기다리게 됩니다.
-
-Working directory
-untracked: Add된 적 없는 파일, ignore 된 파일
-tracked: Add된 적 있고 변경내역이 있는 파일
-git add 명령어로 Staging area로 이동
-
-Staging area
-커밋을 위한 준비 단계
-예시: 작업을 위해 선택된 파일들
-git commit 명령어로 repository로 이동
-
-Repository
-.git directory라고도 불림
-커밋된 상태
-
-git rm
-tigers.yaml를 삭제해본 뒤 git status로 살펴보기
-
-파일의 삭제가 working directory에 있음
-git reset --hard로 복원
-
-git rm tigers.yaml로 삭제하고 git status로 살펴보기
-
-파일의 삭제가 Staging area에 있음
-git reset --hard로 복원
-
-git mv
-tigers.yaml를 zzamtigers.yaml로 이름변경 뒤 git status로 살펴보기
-복원 후 git mv tigers.yaml zzamtigers.yaml로 실행 뒤 비교
-
-파일을 staging area에서 working directory로
-git restore --staged (파일명)
---staged를 빼면 working directory에서도 제거
-예전: git reset HEAD (파일명)
-
-reset의 세 가지 옵션
---soft: repository에서 staging area로 이동
---mixed (default): repository에서 working directory로 이동
---hard: 수정사항 완전히 삭제
-
+git rm tigers.yaml로 삭제하고 git status로 살펴보기<br/>
+<br/>
+파일의 삭제가 Staging area에 있음<br/>
+git reset --hard로 복원<br/>
+ rm 명령을 실행하면 워킹 디렉터리의 해당 파일을 삭제 후에 파일이 삭제 되었다는 내역을 Staging Area에 추가하는 것입니다.<br/>
+ 이때의 tigers.yaml은 deleted 상태이면서 Staged 상태입니다.
+<br/>
+git mv<br/>
+tigers.yaml를 zzamtigers.yaml로 이름변경 뒤 git status로 살펴보기<br/>
+복원 후 git mv tigers.yaml zzamtigers.yaml로 실행 뒤 비교<br/>
+<br/>
+파일을 staging area에서 working directory로<br/>
+git restore --staged (파일명)<br/>
+--staged를 빼면 working directory에서도 제거<br/>
+예전: git reset HEAD (파일명)<br/>
+<br/>
+reset의 세 가지 옵션<br/>
+--soft: repository에서 staging area로 이동<br/>
+--mixed (default): repository에서 working directory로 이동<br/>
+--hard: 수정사항 완전히 삭제<br/>
+<br/>
 ![image](https://user-images.githubusercontent.com/69129562/207845247-d9c7afeb-59f7-43f0-b6ef-70e4c9ff713c.png)
-
-Git의 HEAD
-현재 속한 브랜치의 가장 최신 커밋
-switch로 브랜치 이동해보기
-main과 delta-branch
-
-checkout으로 앞뒤 이동해보기
-git checkout HEAD^
-^ 또는 ~: 갯수만큼 이전으로 이동
-git checkout HEAD^^^, git checkout HEAD~5
-커밋 해시를 사용해서도 이동 가능
-git checkout (커밋해시)
-git checkout - : (이동을) 한 단계 되돌리기
-git reset HEAD(원하는 단계) (옵션)
-
-fetch와 pull의 차이
-fetch: 원격 저장소의 최신 커밋을 로컬로 가져오기만 함
-pull: 원격 저장소의 최신 커밋을 로컬로 가져와 merge 또는 rebase
-원격의 새 브랜치 확인
-git checkout origin/(브랜치명)
-git switch -t origin/(브랜치명)
-
+<br/>
+Git의 HEAD<br/>
+현재 속한 브랜치의 가장 최신 커밋<br/>
+switch로 브랜치 이동해보기<br/>
+main과 delta-branch<br/>
+<br/>
+checkout으로 앞뒤 이동해보기<br/>
+git checkout HEAD^<br/>
+^ 또는 ~: 갯수만큼 이전으로 이동<br/>
+git checkout HEAD^^^, git checkout HEAD~5<br/>
+커밋 해시를 사용해서도 이동 가능<br/>
+git checkout (커밋해시)<br/>
+git checkout - : (이동을) 한 단계 되돌리기<br/>
+git reset HEAD(원하는 단계) (옵션)<br/>
+<br/>
+fetch와 pull의 차이<br/>
+fetch: 원격 저장소의 최신 커밋을 로컬로 가져오기만 함<br/>
+pull: 원격 저장소의 최신 커밋을 로컬로 가져와 merge 또는 rebase<br/>
+원격의 새 브랜치 확인<br/>
+git checkout origin/(브랜치명)<br/>
+git switch -t origin/(브랜치명)<br/>
+<br/>
 global 설정과 local 설정
 config를 --global과 함께 지정하면 전역으로 설정됩니다.
 특정 프로젝트만의 user.name과 user.email 지정해보기
