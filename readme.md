@@ -263,7 +263,7 @@ main과 delta-branch<br/>
 <br/>
 checkout으로 앞뒤 이동해보기<br/>
 git checkout HEAD^<br/>
-^ 또는 ~: 갯수만큼 이전으로 이동<br/>
+^ 또는 ~ : 갯수만큼 이전으로 이동<br/>
 git checkout HEAD^^^, git checkout HEAD~5<br/>
 커밋 해시를 사용해서도 이동 가능<br/>
 git checkout (커밋해시)<br/>
