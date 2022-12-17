@@ -366,9 +366,9 @@ git checkout v1.2.1<br/>
   -git push --delete (원격명) (태그명)<br/>
 3.로컬의 모든 태그 원격에 올리기<br/>
   -git push --tags<br/>
-<br/>
+
 ![image](https://user-images.githubusercontent.com/69129562/207874810-7fa383cf-27a1-423e-b78f-1732583b99b1.png)
-<br/>
+
 cherry-pick 명령어는 특정한 commit 하나만 콕 찝어서 현재 HEAD가 가리키는 branch에 추가할 수 있게 해준다.<br/>
 Cherry 커밋 main 브랜치로 가져오기<br/>
 1. main 브랜치에서 실행<br/>
@@ -378,9 +378,9 @@ Cherry 커밋 main 브랜치로 가져오기<br/>
 3. fruit 브랜치에서 파생된 citrus 브랜치를 main 브랜치로 옮겨붙이기<br/>
   git rebase --onto (도착 브랜치) (출발 브랜치) (이동할 브랜치) -> git rebase --onto main fruit citrus<br/>
 rebase --onto를 되돌리려면?<br/>
-<br/>
+
 ![image](https://user-images.githubusercontent.com/69129562/207876493-ebc45b58-9413-4fb3-82e7-c4f61653917a.png)
-<br/>
+
 reset은 브랜치별로 이뤄지므로, rebase --onto로 영향을 받은
 모든 브랜치들에서 하나하나 리셋을 진행해주어야 합니다.<br/>
 혹은 다시 옮겨붙이는 방법도 있죠.<br/>
@@ -409,14 +409,14 @@ merge --squash 옵션 사용<br/>
 root 브랜치의 마디들을 하나로 묶어 main 브랜치로 가져오기<br/>
 git merge --squash (대상 브랜치)<br/>
 일반 merge : A와 B 두 브랜치를 한 곳으로 이어붙임<br/>
-<br/>
+
 ![image](https://user-images.githubusercontent.com/69129562/207878949-b9e5cac8-e0b5-4c75-bd8b-b4c37fc9559f.png)
-<br/>
+
 
 merge --squash : B 브랜치의 마디들을 복사해다가 한 마디로 모아 A 브랜치에 붙임 (staged 상태로)<br/>
-<br/>
+
 ![image](https://user-images.githubusercontent.com/69129562/207879298-9ddcff5e-9b7d-4069-9175-6bf0fb35c8b7.png)
-<br/>
+
 각 커밋마다의 변경사항 함께 보기
 git log -p
 최근 n개 커밋만 보기
