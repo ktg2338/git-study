@@ -377,6 +377,9 @@ Cherry 커밋 main 브랜치로 가져오기<br/>
   rebase --onto 옵션 사용<br/>
 3. fruit 브랜치에서 파생된 citrus 브랜치를 main 브랜치로 옮겨붙이기<br/>
   git rebase --onto (도착 브랜치) (출발 브랜치) (이동할 브랜치) -> git rebase --onto main fruit citrus<br/>
+  
+  ![image](https://user-images.githubusercontent.com/69129562/208231833-4fad8b2b-4bde-4d73-a55e-3ad6506dfc29.png)
+
 rebase --onto를 되돌리려면?<br/>
 
 ![image](https://user-images.githubusercontent.com/69129562/207876493-ebc45b58-9413-4fb3-82e7-c4f61653917a.png)
