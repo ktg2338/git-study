@@ -277,145 +277,146 @@ pull: 원격 저장소의 최신 커밋을 로컬로 가져와 merge 또는 reba
 git checkout origin/(브랜치명)<br/>
 git switch -t origin/(브랜치명)<br/>
 <br/>
-global 설정과 local 설정
-config를 --global과 함께 지정하면 전역으로 설정됩니다.
-특정 프로젝트만의 user.name과 user.email 지정해보기
-현재 모든 설정값 보기
-git config (global) --list
-기본 에디터 수정
-git config --global core.editor "code --wait"
-
-1. 내용 확인하며 hunk별로 스테이징하기
-깃의 변경사항 단위를 hunk라고 합니다.
-아래 명령어로 hunk별 스테이징 진행
-git add -p
-옵션 설명을 보려면 ?입력 후 엔터
-y 또는 n로 각 헝크 선택
-2. 변경사항을 확인하고 커밋하기
-git commit -v
-
-커밋하기 애매한 변화 치워두기
-1. 아래 명령어로 치워두기
-git stash
-2. 원하는 시점, 브랜치에서 다시 적용
-git stash pop
-3. 원하는 것만 stash 해보기
-git stash -p
-4. 메시지와 함께 스태시
-git stash -m 'Add Stash3'
-스태시 목록 보기
-git stash list.
-
-커밋 메시지 변경
-git commit --amend
-커밋 메시지 한 줄로 변경
-git commit --amend -m 'Add members to Panthers and Pumas'
-
-git rebase -i (대상 바로 이전 커밋)
-과거 커밋 내역을 다양한 방법으로 수정 가능
+global 설정과 local 설정<br/>
+config를 --global과 함께 지정하면 전역으로 설정됩니다.<br/>
+특정 프로젝트만의 user.name과 user.email 지정해보기<br/>
+현재 모든 설정값 보기<br/>
+git config (global) --list<br/>
+기본 에디터 수정<br/>
+git config --global core.editor "code --wait"<br/>
+<br/>
+1. 내용 확인하며 hunk별로 스테이징하기<br/>
+깃의 변경사항 단위를 hunk라고 합니다.<br/>
+아래 명령어로 hunk별 스테이징 진행<br/>
+git add -p<br/>
+옵션 설명을 보려면 ?입력 후 엔터<br/>
+y 또는 n로 각 헝크 선택<br/>
+2. 변경사항을 확인하고 커밋하기<br/>
+git commit -v<br/>
+<br/>
+커밋하기 애매한 변화 치워두기<br/>
+1. 아래 명령어로 치워두기<br/>
+git stash<br/>
+2. 원하는 시점, 브랜치에서 다시 적용<br/>
+git stash pop<br/>
+3. 원하는 것만 stash 해보기<br/>
+git stash -p<br/>
+4. 메시지와 함께 스태시<br/>
+git stash -m 'Add Stash3'<br/>
+스태시 목록 보기<br/>
+git stash list.<br/>
+<br/>
+커밋 메시지 변경<br/>
+git commit --amend<br/>
+커밋 메시지 한 줄로 변경<br/>
+git commit --amend -m 'Add members to Panthers and Pumas'<br/>
+<br/>
+git rebase -i (대상 바로 이전 커밋)<br/>
+과거 커밋 내역을 다양한 방법으로 수정 가능<br/>
 
 ![image](https://user-images.githubusercontent.com/69129562/207854109-4132ecdb-8fa6-4a9e-91f0-7bfbbcbc1cbf.png)
 
-git clean -> Git에서 추적하지 않는 파일들 삭제
+git clean -> Git에서 추적하지 않는 파일들 삭제<br/>
 
 ![image](https://user-images.githubusercontent.com/69129562/207868533-97b20dfe-499e-4246-a4f7-b34b6db123d3.png)
 
-git restore -> 특정 파일을 지정된 상태로 복구
-파일을 수정하고 아래 명령어들 사용해보기
-git restore (파일명)
--워킹 디렉토리의 특정 파일 복구
--파일명 자리에 . : 모든 파일 복구
-
-변경상태를 스테이지에서 워킹 디렉토리로 돌려놓기
-git restore --staged (파일명)
-
-파일을 특정 커밋의 상태로 되돌리기
-git restore --source=(헤드 또는 커밋 해시) 파일명
-
-git reflog
-reset으로 사라진 커밋을 복구
+git restore -> 특정 파일을 지정된 상태로 복구<br/>
+파일을 수정하고 아래 명령어들 사용해보기<br/>
+git restore (파일명)<br/>
+-워킹 디렉토리의 특정 파일 복구<br/>
+-파일명 자리에 . : 모든 파일 복구<br/>
+<br/>
+변경상태를 스테이지에서 워킹 디렉토리로 돌려놓기<br/>
+git restore --staged (파일명)<br/>
+<br/>
+파일을 특정 커밋의 상태로 되돌리기<br/>
+git restore --source=(헤드 또는 커밋 해시) 파일명<br/>
+<br/>
+git reflog<br/>
+reset으로 사라진 커밋을 복구<br/>
 reflog는 프로젝트가 위치한 커밋이 바뀔 때마다 기록되는 내역을 보여주고
-이를 사용하여 reset하기 이전 시점으로 프로젝트를 복구할 수 있습니다.
-
-커밋에 태그 달아보기
-lightweight -	특정 커밋을 가리키는 용도
-annotated	 - 작성자 정보와 날짜, 메시지, GPG 서명 포함 가능
-마지막 커밋에 태그 달기 (lightweight)
-git tag v2.0.0
-현존하는 태그 확인
-git tag
-원하는 태그의 내용 확인
-git show v2.0.0
-태그 삭제
-git tag -d v2.0.0
-마지막 커밋에 태그 달기 (annotated)
-git tag -a v2.0.0
-입력 후 메시지 작성 또는
-git tag v2.0.0 -m '자진모리 버전' - (-m 태그가 -a 태그 암시)
-원하는 커밋에 태그 달기
-git tag (태그명) (커밋 해시) -m (메시지)
-원하는 패턴으로 필터링하기
-git tag -l 'v1.*'
-원하는 버전으로 체크아웃
-git checkout v1.2.1
-
-원격에 태그 동기화
-특정 태그 원격에 올리기
-git push (원격명) (태그명)
-특정 태그 원격에서 삭제
-git push --delete (원격명) (태그명)
-로컬의 모든 태그 원격에 올리기
-git push --tags
-
+이를 사용하여 reset하기 이전 시점으로 프로젝트를 복구할 수 있습니다.<br/>
+<br/>
+커밋에 태그 달아보기<br/>
+lightweight -	특정 커밋을 가리키는 용도<br/>
+annotated	 - 작성자 정보와 날짜, 메시지, GPG 서명 포함 가능<br/>
+마지막 커밋에 태그 달기 (lightweight)<br/>
+git tag v2.0.0<br/>
+현존하는 태그 확인<br/>
+git tag<br/>
+원하는 태그의 내용 확인<br/>
+git show v2.0.0<br/>
+태그 삭제<br/>
+git tag -d v2.0.0<br/>
+마지막 커밋에 태그 달기 (annotated)<br/>
+git tag -a v2.0.0<br/>
+입력 후 메시지 작성 또는<br/>
+git tag v2.0.0 -m '자진모리 버전' - (-m 태그가 -a 태그 암시)<br/>
+원하는 커밋에 태그 달기<br/>
+git tag (태그명) (커밋 해시) -m (메시지)<br/>
+원하는 패턴으로 필터링하기<br/>
+git tag -l 'v1.*'<br/>
+원하는 버전으로 체크아웃<br/>
+git checkout v1.2.1<br/>
+<br/>
+원격에 태그 동기화<br/>
+1.특정 태그 원격에 올리기<br/>
+  -git push (원격명) (태그명)<br/>
+2.특정 태그 원격에서 삭제<br/>
+  -git push --delete (원격명) (태그명)<br/>
+3.로컬의 모든 태그 원격에 올리기<br/>
+  -git push --tags<br/>
+<br/>
 ![image](https://user-images.githubusercontent.com/69129562/207874810-7fa383cf-27a1-423e-b78f-1732583b99b1.png)
-cherry-pick 명령어는 특정한 commit 하나만 콕 찝어서 현재 HEAD가 가리키는 branch에 추가할 수 있게 해준다.
-Cherry 커밋 main 브랜치로 가져오기
-main 브랜치에서 실행
-git cherry-pick (체리의 해시)
-다른 브랜치에서 파생된 브랜치 옮겨붙이기
-rebase --onto 옵션 사용
-fruit 브랜치에서 파생된 citrus 브랜치를 main 브랜치로 옮겨붙이기
-git rebase --onto (도착 브랜치) (출발 브랜치) (이동할 브랜치) -> git rebase --onto main fruit citrus
-rebase --onto를 되돌리려면?
-
+<br/>
+cherry-pick 명령어는 특정한 commit 하나만 콕 찝어서 현재 HEAD가 가리키는 branch에 추가할 수 있게 해준다.<br/>
+Cherry 커밋 main 브랜치로 가져오기<br/>
+1. main 브랜치에서 실행<br/>
+  git cherry-pick (체리의 해시)<br/>
+2. 다른 브랜치에서 파생된 브랜치 옮겨붙이기<br/>
+  rebase --onto 옵션 사용<br/>
+3. fruit 브랜치에서 파생된 citrus 브랜치를 main 브랜치로 옮겨붙이기<br/>
+  git rebase --onto (도착 브랜치) (출발 브랜치) (이동할 브랜치) -> git rebase --onto main fruit citrus<br/>
+rebase --onto를 되돌리려면?<br/>
+<br/>
 ![image](https://user-images.githubusercontent.com/69129562/207876493-ebc45b58-9413-4fb3-82e7-c4f61653917a.png)
-
+<br/>
 reset은 브랜치별로 이뤄지므로, rebase --onto로 영향을 받은
-모든 브랜치들에서 하나하나 리셋을 진행해주어야 합니다.
-혹은 다시 옮겨붙이는 방법도 있죠.
+모든 브랜치들에서 하나하나 리셋을 진행해주어야 합니다.<br/>
+혹은 다시 옮겨붙이는 방법도 있죠.<br/>
 현재 이번 실습으로 변화가 일어난 브랜치는
-main(패스트포워드 됨)과 citrus 이 둘입니다.
-1. main 브랜치
+main(패스트포워드 됨)과 citrus 이 둘입니다.<br/>
+1. main 브랜치<br/>
 main은 그리로 옮겨붙여진 citrus로 fastforward된 것이 마지막 액션이므로
-reflog의 기록상에서 그 이전 기록으로 reset --hard를 하면 됩니다.
-lemon과 lime이 추가되기 전으로 돌아가는거죠.
-2. citrus 브랜치
-방법 A
+reflog의 기록상에서 그 이전 기록으로 reset --hard를 하면 됩니다.<br/>
+lemon과 lime이 추가되기 전으로 돌아가는거죠.<br/>
+2. citrus 브랜치<br/>
+방법 A<br/>
 그리고 citrus 브랜치는 해당 브랜치가 옮겨지기 전 마지막 커밋인
-commit: Lime 부분을 reflog에서 찾아 그리로 reset --hard하면 됩니다.
-방법 B
+commit: Lime 부분을 reflog에서 찾아 그리로 reset --hard하면 됩니다.<br/>
+방법 B<br/>
 다른 방법으로는, 다시 rebase --onto를 사용해서
 citrus의 커밋들을 main으로부터 도로
-fruit브랜치의 orange 부분으로 옮기는 것입니다.
+fruit브랜치의 orange 부분으로 옮기는 것입니다.<br/>
 그러러면 orange 커밋으로 checkout 한 다음
 그곳에서 새 브랜치를 만들고 (temp라 가정하죠)
-git rebase --onto temp main citrus
+git rebase --onto temp main citrus<br/>
 위 명령어로 citrus의 두 커밋들을 해당 위치로 옮겨붙인 뒤
-temp 브랜치는 삭제해주시면 됩니다.
-
-다른 커밋들을 하나로 묶어 가져오기
-merge --squash 옵션 사용
-root 브랜치의 마디들을 하나로 묶어 main 브랜치로 가져오기
-git merge --squash (대상 브랜치)
-일반 merge : A와 B 두 브랜치를 한 곳으로 이어붙임
-
+temp 브랜치는 삭제해주시면 됩니다.<br/>
+<br/>
+다른 커밋들을 하나로 묶어 가져오기<br/>
+merge --squash 옵션 사용<br/>
+root 브랜치의 마디들을 하나로 묶어 main 브랜치로 가져오기<br/>
+git merge --squash (대상 브랜치)<br/>
+일반 merge : A와 B 두 브랜치를 한 곳으로 이어붙임<br/>
+<br/>
 ![image](https://user-images.githubusercontent.com/69129562/207878949-b9e5cac8-e0b5-4c75-bd8b-b4c37fc9559f.png)
+<br/>
 
-
-merge --squash : B 브랜치의 마디들을 복사해다가 한 마디로 모아 A 브랜치에 붙임 (staged 상태로)
-
+merge --squash : B 브랜치의 마디들을 복사해다가 한 마디로 모아 A 브랜치에 붙임 (staged 상태로)<br/>
+<br/>
 ![image](https://user-images.githubusercontent.com/69129562/207879298-9ddcff5e-9b7d-4069-9175-6bf0fb35c8b7.png)
-
+<br/>
 각 커밋마다의 변경사항 함께 보기
 git log -p
 최근 n개 커밋만 보기
@@ -501,5 +502,65 @@ main-project에서 아래 명령어로 업데이트
 git submodule update --remote
 서브모듈 안에 또 서브모듈이 있을 시: --recursive 추가
 
-13 1
+Pull request
+변경사항을 merge하기 전 리뷰를 거치기 위함
+  -팀원들의 동의를 거친 뒤 대상 브랜치에 적용
 
+풀 리퀘스트 사용해보기
+1. 새로운 브랜치 생성 후 변경사항 커밋하여 푸시
+2. GitHub 레포지토리 페이지에서 Compare & pull request 버튼 클릭
+  -또는 ~ branches에서 New pull request 클릭
+3. 작성 후 Create pull request 클릭
+
+풀 리퀘스트 검토 후 처리하기
+1. Hub 레포지토리 페이지에서 Pull requests 탭 클릭
+2. 풀 리퀘스트 클릭하여 내용 검토
+  -의견이 있을 시 코멘트 달기
+  -반려해야 할 시 Close pull request
+  -승인할 시 Merge pull request
+  
+이슈 작성해보기
+1. GitHub 레포지토리 페이지에서 Issues 탭 클릭
+2. 필요시 label 또는 milestone 생성
+  -milestone: 이슈의 주제 묶음 (특정 목표 등)
+3. 이슈 작성
+  -필요시 label, milestone, asignee 지정
+4. 이슈 확인 후 처리
+  -코멘트 달기
+  -관련 개발 착수 (브랜치명이나 커밋 footer에 이슈 번호 반영)
+  -해결 뒤: Close issue
+  
+SSH 프로토콜을 통한 인증
+  -공개키 암호화 방식 활용
+  -username과 토큰 사용할 필요 없음
+  -컴퓨터 자체에 키 저장
+SSH 키 등록하기
+  -계정의 Settings - SSH and GPG keys
+  -해당 페이지의 가이드 참조
+1. SSH키 존재 여부 확인
+  -터미널(윈도우의 경우 Bash Shell)에서 ~/.ssh로 이동
+  cd ~/.ssh
+  -id_rsa.pub, id_ecdsa.pub, id_ed25519.pub 파일 중 하나 존재 여부 확인
+  ls
+  -있다면 바로 3번으로
+2. SSH 키 생성
+  -터미널(윈도우의 경우 Bash Shell)에서 키 생성
+  ssh-keygen -t ed25519 -C "(이메일 주소)"
+  -원할 시 passphrase 입력
+  -1번의 과정으로 키 생성 확인
+3. GitHub에 키 등록
+  -공개키 열람하여 복사
+  cat ~/.ssh/id_ed25519.pub
+  -New SSH Key 클릭하여 키 이름과 함께 등록
+
+
+GPG 키를 통한 검증
+GitHub 커밋 내역 살펴보기
+  -로컬에서 푸시한 커밋과 GitHub에서 작성한 커밋 비교
+  -Verified : 신뢰할 만한 출처에서 커밋되었다는 인증
+
+OctoTree
+  -GitHub 레포지토리의 디렉토리를 보다 편하게 브라우징
+  
+GitHub CLI
+  -GitHub 작업 전용 CLI 툴
